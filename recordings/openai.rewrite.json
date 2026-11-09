@@ -1,0 +1,26 @@
+{
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "sdk_version": "3.35.1",
+  "captured_at": "2026-10-22",
+  "step": "PC-REWRITE",
+  "mutation": "Rewrite an earlier user block.",
+  "prediction": "read drops to 0",
+  "messages_sent": 28,
+  "provider_usage": {
+    "input_tokens": 5555,
+    "input_tokens_details": {
+      "cache_write_tokens": 1117,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 1117
+      },
+      "cached_tokens": 4435
+    },
+    "output_tokens": 201,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 5756
+  }
+}

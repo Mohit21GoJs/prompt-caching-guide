@@ -34,3 +34,12 @@ def test_when_it_pays_and_when_it_bites():
     assert run("Sparse traffic: 6 calls, 10 minutes apart", "1h")["verdict"] == "Pays"
     assert run("Steady but spaced: 6 calls, 3 minutes apart", "1h")["cached"] > run("Steady but spaced: 6 calls, 3 minutes apart", "5m")["cached"]
     assert run("Timestamp at the start: 10 calls, prefix changes every call")["verdict"] == "Bites"
+
+
+def test_rewriting_history_costs_more_than_appending():
+    for provider, last_turn in (("anthropic", 6), ("openai", 11)):
+        appended = guide.load_recording(provider, "multiturn")["turns"][last_turn]["provider_usage"]
+        rewritten = guide.load_recording(provider, "rewrite")["provider_usage"]
+        assert guide.cache_read(provider, rewritten) < guide.cache_read(provider, appended)
+        assert guide.turn_numbers(provider, rewritten)["write"] > guide.turn_numbers(provider, appended)["write"]
+        assert economics.cost_of_usage(provider, rewritten) > economics.cost_of_usage(provider, appended)

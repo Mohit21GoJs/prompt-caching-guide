@@ -131,3 +131,11 @@ def turns_table(provider: str, usages: list[dict]) -> str:
         share = n["read"] / n["total"] if n["total"] else 0
         rows.append(f"| {i} | {shown_first} | {n['read']} | {n['write']} | `{'█' * round(share * 20):<20}` {share:.0%} |")
     return head.replace(f"| {names[0]} |", f"| `{names[0]}` |", 1) + "\n" + "\n".join(rows)
+
+
+REWRITES = {
+    "first": "Edit the first message",
+    "middle": "Edit a message in the middle",
+    "drop": "Drop the oldest turn (sliding window)",
+    "summarize": "Replace old turns with a summary",
+}

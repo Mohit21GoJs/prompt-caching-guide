@@ -2,7 +2,7 @@
 
 Learn prompt caching by running small [marimo](https://marimo.io) notebooks against Anthropic and OpenAI. Each lesson has one idea, one diagram, and the real request code. You see the provider's raw `usage` fields, unmodified.
 
-Lessons 1 to 3 run in two modes (lesson 4 is arithmetic only and needs no key):
+Lessons 1 to 3 and 5 run in two modes (lesson 4 is arithmetic only and needs no key):
 
 - **Replay** (default): shows real responses recorded from the providers. Needs no key and costs nothing.
 - **Live**: sends two small requests with your own key and shows what comes back.
@@ -43,8 +43,10 @@ The model defaults to the one the recordings were captured with. Override it wit
 | 3 | `03_openai_growing_conversation.py` | The same conversation with automatic caching and `cached_tokens` in steps. |
 | 4 | `04_anthropic_break_even.py` | When caching pays and when it costs more: real calls costed, break-even reuses, seven usage patterns, 5-minute vs 1-hour cache. |
 | 4 | `04_openai_break_even.py` | The same experiments with OpenAI's prices. Paste your own usage JSON to cost it. |
+| 5 | `05_anthropic_rewriting_history.py` | Edit, drop or summarize old messages. One rewrite recorded (+42% cost); three more live. |
+| 5 | `05_openai_rewriting_history.py` | The same rewrites where caching is automatic (recorded rewrite: +71% cost). |
 
-Planned next: rewriting history (what happens when you edit or trim an old conversation).
+Ideas for later: other vendors (Gemini, Bedrock), a prompt linter for unstable prefixes, and a debugging flowchart for "both cache fields are 0".
 
 ## Prices
 
