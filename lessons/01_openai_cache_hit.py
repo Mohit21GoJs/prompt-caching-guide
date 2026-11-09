@@ -55,24 +55,25 @@ def _(guide, mo):
 
 @app.cell
 def _(mo):
-    mo.md("## The request\n\nNothing in it asks for caching. The only caching hint is `prompt_cache_key`.")
+    mo.md("""
+    ## The request
+
+    Nothing in it asks for caching. The only caching hint is `prompt_cache_key`.
+    """)
     return
 
 
-@app.cell
-def _():
-    def build_request(model: str, prefix: str, question: str, cache_key: str) -> dict:
-        return {
-            "model": model,
-            "max_output_tokens": 64,
-            "prompt_cache_key": cache_key,  # <- optional routing hint, keep it the same across calls
-            "input": [
-                {"role": "developer", "content": prefix},  # the long, stable part goes first
-                {"role": "user", "content": question},  # the part that changes goes last
-            ],
-        }
-
-    return (build_request,)
+@app.function
+def build_request(model: str, prefix: str, question: str, cache_key: str) -> dict:
+    return {
+        "model": model,
+        "max_output_tokens": 64,
+        "prompt_cache_key": cache_key,  # <- optional routing hint, keep it the same across calls
+        "input": [
+            {"role": "developer", "content": prefix},  # the long, stable part goes first
+            {"role": "user", "content": question},  # the part that changes goes last
+        ],
+    }
 
 
 @app.cell
@@ -83,7 +84,7 @@ def _(guide, mo, mode):
 
 
 @app.cell
-def _(build_request, guide, mo, mode, run):
+def _(guide, mo, mode, run):
     runs = []
     _note = ""
     if mode.value == "replay":
@@ -145,15 +146,13 @@ def _(mo, runs):
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        ## What to try next
+    mo.md("""
+    ## What to try next
 
-        - Break the hit: edit the first line of the prefix between the two calls and run live again.
-        - Put the changing question first and the handbook last. The hit disappears, because only a matching start is cached.
-        - Compare with `01_anthropic_cache_hit.py`, where you must opt in with `cache_control`.
-        """
-    )
+    - Break the hit: edit the first line of the prefix between the two calls and run live again.
+    - Put the changing question first and the handbook last. The hit disappears, because only a matching start is cached.
+    - Compare with `01_anthropic_cache_hit.py`, where you must opt in with `cache_control`.
+    """)
     return
 
 

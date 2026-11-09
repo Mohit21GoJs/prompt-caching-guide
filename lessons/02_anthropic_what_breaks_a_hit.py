@@ -14,18 +14,16 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        # Lesson 2 (Anthropic): what breaks a cache hit
+    mo.md("""
+    # Lesson 2 (Anthropic): what breaks a cache hit
 
-        A hit needs the **start** of the request to match an earlier request exactly. Anthropic
-        builds the request in this order: tools, then system, then messages. The cache covers
-        everything up to your `cache_control` mark.
+    A hit needs the **start** of the request to match an earlier request exactly. Anthropic
+    builds the request in this order: tools, then system, then messages. The cache covers
+    everything up to your `cache_control` mark.
 
-        So a change near the end keeps the hit. A change before the mark breaks it, and you pay
-        to write the cache again. Pick a change, then compare.
-        """
-    )
+    So a change near the end keeps the hit. A change before the mark breaks it, and you pay
+    to write the cache again. Pick a change, then compare.
+    """)
     return
 
 
@@ -52,7 +50,9 @@ def _(guide, mo):
 
 @app.cell
 def _(mo):
-    mo.md("## The request, and the three changes")
+    mo.md("""
+    ## The request, and the three changes
+    """)
     return
 
 
@@ -188,17 +188,15 @@ def _(guide, mo):
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        ## The rule to take away
+    mo.md("""
+    ## The rule to take away
 
-        Put what stays the same first and what changes last. Anything that changes before the
-        cache mark, including tool definitions and a timestamp or ID inside the system text,
-        turns every request into a fresh write.
+    Put what stays the same first and what changes last. Anything that changes before the
+    cache mark, including tool definitions and a timestamp or ID inside the system text,
+    turns every request into a fresh write.
 
-        Next: `02_openai_what_breaks_a_hit.py` runs the same three changes where caching is automatic.
-        """
-    )
+    Next: `02_openai_what_breaks_a_hit.py` runs the same three changes where caching is automatic.
+    """)
     return
 
 
