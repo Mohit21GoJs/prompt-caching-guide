@@ -1,0 +1,32 @@
+{
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "sdk_version": "1.15.0",
+  "captured_at": "2026-10-22",
+  "step": "PC-TOOL",
+  "mutation": "Reverse tools or edit one schema.",
+  "prediction": "read drops to 0",
+  "prefix": {
+    "chars": 22302,
+    "sha256": "f8dd81176a615388",
+    "starts_with": "SYNTHETIC SUPPORT HANDBOOK\nVersion 2026-10-19\nRun 20261022T1"
+  },
+  "user_message": "Synthetic user alpha asks for a refund-policy summary without a tool call.",
+  "provider_usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 7676
+    },
+    "cache_creation_input_tokens": 7676,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 101,
+    "output_tokens": 402,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

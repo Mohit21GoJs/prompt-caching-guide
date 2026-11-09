@@ -37,8 +37,10 @@ The model defaults to the one the recordings were captured with. Override it wit
 |---|--------|---------------|
 | 1 | `01_anthropic_cache_hit.py` | Opt in with `cache_control`. Call 1 writes, call 2 reads. |
 | 1 | `01_openai_cache_hit.py` | Caching is automatic. Call 2 reports `cached_tokens`. |
+| 2 | `02_anthropic_what_breaks_a_hit.py` | Change the question, one byte of the handbook, or the tool order. Which keeps the hit? |
+| 2 | `02_openai_what_breaks_a_hit.py` | The same three changes where caching is automatic. |
 
-More lessons are planned: what breaks a hit, multi-turn, rewriting history, and a break-even lesson on when caching saves money and when it costs more.
+More lessons are planned: multi-turn, rewriting history, and a break-even lesson on when caching saves money and when it costs more.
 
 ## How to read a result
 

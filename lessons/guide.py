@@ -86,3 +86,17 @@ def flat_usage(usage: dict, prefix: str = "") -> dict:
 
 def usage_json(usage: dict) -> str:
     return json.dumps(usage, indent=2, sort_keys=True)
+
+
+def cache_read(provider: str, usage: dict) -> int:
+    """Tokens served from cache, using each provider's own field name."""
+    if provider == "anthropic":
+        return usage.get("cache_read_input_tokens", 0)
+    return (usage.get("input_tokens_details") or {}).get("cached_tokens", 0)
+
+
+CHANGES = {
+    "question": "Change only the final question",
+    "handbook": "Change one byte in the handbook",
+    "tools": "Reverse the order of the tools",
+}

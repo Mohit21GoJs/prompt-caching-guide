@@ -1,0 +1,31 @@
+{
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "sdk_version": "3.35.1",
+  "captured_at": "2026-10-22",
+  "step": "PC-TOOL",
+  "mutation": "Reverse tools or edit one schema.",
+  "prediction": "read drops to 0",
+  "prefix": {
+    "chars": 22302,
+    "sha256": "36c044b00a330372",
+    "starts_with": "SYNTHETIC SUPPORT HANDBOOK\nVersion 2026-10-19\nRun 20261022T1"
+  },
+  "user_message": "Synthetic user alpha asks for a refund-policy summary without a tool call.",
+  "provider_usage": {
+    "input_tokens": 4456,
+    "input_tokens_details": {
+      "cache_write_tokens": 4453,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 4453
+      },
+      "cached_tokens": 0
+    },
+    "output_tokens": 140,
+    "output_tokens_details": {
+      "reasoning_tokens": 49
+    },
+    "total_tokens": 4596
+  }
+}

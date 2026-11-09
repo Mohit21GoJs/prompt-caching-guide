@@ -26,5 +26,6 @@
       "reasoning_tokens": 62
     },
     "total_tokens": 4609
-  }
+  },
+  "mutation": "Repeat the request unchanged."
 }

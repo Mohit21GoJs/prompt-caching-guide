@@ -1,0 +1,31 @@
+{
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "sdk_version": "3.35.1",
+  "captured_at": "2026-10-22",
+  "step": "PC-SUFFIX",
+  "mutation": "Change the final user message.",
+  "prediction": "read>0",
+  "prefix": {
+    "chars": 22302,
+    "sha256": "36c044b00a330372",
+    "starts_with": "SYNTHETIC SUPPORT HANDBOOK\nVersion 2026-10-19\nRun 20261022T1"
+  },
+  "user_message": "Synthetic user beta asks for the return window without a tool call.",
+  "provider_usage": {
+    "input_tokens": 4455,
+    "input_tokens_details": {
+      "cache_write_tokens": 17,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 17
+      },
+      "cached_tokens": 4435
+    },
+    "output_tokens": 108,
+    "output_tokens_details": {
+      "reasoning_tokens": 74
+    },
+    "total_tokens": 4563
+  }
+}
