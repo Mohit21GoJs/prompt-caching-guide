@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="960" height="296" viewBox="0 0 960 296" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="prefix-anatomy-title prefix-anatomy-desc">
+        <title id="prefix-anatomy-title">Anatomy of a cacheable request</title>
+        <desc id="prefix-anatomy-desc">A request split into a stable cacheable prefix (ordered tools, system handbook, append-only history) and a changing user suffix that is never cached.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/></marker>
+        </defs>
+        <rect width="100%" height="100%" fill="#f5f5f5"/>
+
+        <!-- Focal bracket: cacheable prefix -->
+        <text x="390" y="84" text-anchor="middle" fill="#bf4520" font-family="Geist Mono, ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.18em">CACHEABLE PREFIX · EXACT BYTES REUSED</text>
+        <polyline points="60,108 60,100 720,100 720,108" fill="none" stroke="#bf4520" stroke-width="1.2"/>
+
+        <!-- Boundary between prefix and suffix -->
+        <line x1="732" y1="128" x2="732" y2="224" stroke="#bfc0c0" stroke-width="1" stroke-dasharray="4,3"/>
+
+        <!-- Segment boxes -->
+        <rect x="60" y="140" width="176" height="72" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1.2"/>
+        <text x="72" y="160" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.18em">TOOLS · ORDERED</text>
+        <text x="72" y="180" fill="#2d3142" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600">lookup_order + 2</text>
+        <text x="72" y="198" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="9">schema order is identity</text>
+
+        <rect x="244" y="140" width="256" height="72" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1.2"/>
+        <text x="256" y="160" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.18em">SYSTEM · HANDBOOK</text>
+        <text x="256" y="180" fill="#2d3142" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600">support policy</text>
+        <text x="256" y="198" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="9">~4,500 tokens</text>
+
+        <rect x="508" y="140" width="212" height="72" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1.2"/>
+        <text x="520" y="160" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.18em">MESSAGES · APPEND-ONLY</text>
+        <text x="520" y="180" fill="#2d3142" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600">turns + tool results</text>
+        <text x="520" y="198" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="9">history never rewritten</text>
+
+        <rect x="744" y="140" width="160" height="72" rx="6" fill="#ececec" stroke="#4f5d75" stroke-width="1.2"/>
+        <text x="756" y="160" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8" font-weight="500" letter-spacing="0.18em">SUFFIX · CHANGES</text>
+        <text x="756" y="180" fill="#2d3142" font-family="Geist, system-ui, sans-serif" font-size="12" font-weight="600">user turn</text>
+        <text x="756" y="198" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="9">every request</text>
+
+        <!-- Under-annotations -->
+        <text x="390" y="252" text-anchor="middle" fill="#4f5d75" font-family="Geist Mono, ui-monospace, monospace" font-size="9">one write · reads at r&#215;</text>
+        <text x="824" y="252" text-anchor="middle" fill="#4f5d75" font-family="Geist Mono, ui-monospace, monospace" font-size="9">full price, every call</text>
+      </svg>
