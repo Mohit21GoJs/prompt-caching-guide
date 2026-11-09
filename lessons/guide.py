@@ -139,3 +139,20 @@ REWRITES = {
     "drop": "Drop the oldest turn (sliding window)",
     "summarize": "Replace old turns with a summary",
 }
+
+
+def explain_error(error: Exception, provider: str, where: str = "") -> str:
+    """A plain message for a failed live call, with the likeliest fix for each kind of failure."""
+    name = type(error).__name__
+    key = KEY_NAMES[provider]
+    if "Authentication" in name or "PermissionDenied" in name:
+        hint = f"The provider rejected the key. A `{key}` set in your shell overrides `.env`, so check that one first. Keys can also expire."
+    elif "NotFound" in name:
+        hint = f"The model name was not found. Set `{provider.upper()}_MODEL` in `.env` to a model your key can use."
+    elif "RateLimit" in name:
+        hint = "You hit a rate or spend limit. Wait a minute or check your account."
+    elif "Connection" in name or "Timeout" in name:
+        hint = "The request never reached the provider. Check your network."
+    else:
+        hint = "Check the key, the model name and your network."
+    return f"The live call failed{where}: `{name}`. {hint} Or switch to Replay."

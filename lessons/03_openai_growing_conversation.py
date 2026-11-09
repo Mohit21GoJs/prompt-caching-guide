@@ -104,7 +104,7 @@ def _(build_request, guide, mo, mode, run, turns):
                 usages.append(_response.usage.model_dump(mode="json"))
             badge = guide.label("live", model=_model, sdk=openai.__version__)
         except Exception as _error:
-            _note = f"The live call failed on turn {len(usages) + 1}: `{type(_error).__name__}`. Check the key, the model name and your network, or switch to Replay."
+            _note = guide.explain_error(_error, "openai", f" on turn {len(usages) + 1}")
     else:
         _note = "Press the run button."
     mo.md(_note) if _note else None

@@ -130,7 +130,7 @@ def _(CHANGE_FUNCTIONS, TOOLS, build_request, change, guide, mo, mode, run):
             runs.append(("Call 1: baseline", _first.usage.model_dump(mode="json"), _badge))
             runs.append(("Call 2: after the change", _second.usage.model_dump(mode="json"), _badge))
         except Exception as _error:
-            _note = f"The live call failed: `{type(_error).__name__}`. Check the key, the model name and your network, or switch to Replay."
+            _note = guide.explain_error(_error, "openai")
     else:
         _note = "Press **Run two live requests**."
     mo.md(_note) if _note else None

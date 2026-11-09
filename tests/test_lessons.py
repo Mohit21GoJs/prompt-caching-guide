@@ -33,3 +33,16 @@ def test_recordings_are_trimmed_and_clean(path):
     text = path.read_text().lower()
     assert "api_key" not in text and "bearer" not in text and "sk-" not in text
     assert path.stat().st_size < (9000 if "turns" in data else 4000)
+
+
+def test_failure_messages_name_the_likely_fix():
+    import sys
+    sys.path.insert(0, str(ROOT / "lessons"))
+    import guide
+
+    class AuthenticationError(Exception): ...
+    class NotFoundError(Exception): ...
+
+    assert "overrides `.env`" in guide.explain_error(AuthenticationError(), "openai")
+    assert "ANTHROPIC_MODEL" in guide.explain_error(NotFoundError(), "anthropic")
+    assert " on turn 3" in guide.explain_error(ValueError(), "openai", " on turn 3")

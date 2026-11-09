@@ -105,7 +105,7 @@ def _(guide, mo, mode, run):
                 _response = _client.messages.create(**build_request(_model, _prefix, _question))
                 runs.append((_step, _response.usage.model_dump(mode="json"), guide.label("live", model=_model, sdk=anthropic.__version__)))
         except Exception as _error:  # show a readable reason and a way out
-            _note = f"The live call failed: `{type(_error).__name__}`. Check the key, the model name and your network, or switch to Replay."
+            _note = guide.explain_error(_error, "anthropic")
     else:
         _note = "Press **Run two live requests**."
     mo.md(_note) if _note else None

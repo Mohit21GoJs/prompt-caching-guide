@@ -48,6 +48,16 @@ The model defaults to the one the recordings were captured with. Override it wit
 
 Ideas for later: other vendors (Gemini, Bedrock), a prompt linter for unstable prefixes, and a debugging flowchart for "both cache fields are 0".
 
+## What has been verified
+
+| | Replay | Live |
+|---|---|---|
+| Anthropic lessons 1, 2, 3, 5 | tested on every run (`uv run pytest`) | run on 2026-11-10 with `claude-sonnet-5-5`; every result matched what the lesson predicts |
+| OpenAI lessons 1, 2, 3, 5 | tested on every run | **not yet run**: the one live check attempt hit an expired key |
+| Lesson 4 (arithmetic) | tested against the costs stored with the real captures | no live mode |
+
+A live OpenAI run was reported working by the author for lesson 1 before these checks, but it was not repeated here.
+
 ## Prices
 
 Lesson 4 uses a dated price snapshot in `lessons/economics.py` (checked 2026-10-19, with source links). It warns when the prices are over 60 days old. Prices and cache rules change often, so recheck them before trusting a dollar figure. The tests check that the calculator reproduces the cost estimates stored with the real captures.
