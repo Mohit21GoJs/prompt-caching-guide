@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Actions are pinned to commit hashes so a moved tag cannot change a build.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.12.1"
+      - run: uv sync --locked --python 3.12
+      # Runs every lesson in replay mode with no key and no network, and checks recordings and prices.
+      - run: uv run pytest -q
+      - run: uv run marimo check lessons/[0-9][0-9]_*.py
+      # Fails with a clear message if the molab table in the README no longer matches lessons/.
+      - run: uv run python tools/molab_links.py --check README.md
