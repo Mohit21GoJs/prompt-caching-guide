@@ -2,7 +2,7 @@
 
 Learn prompt caching by running small [marimo](https://marimo.io) notebooks against Anthropic and OpenAI. Each lesson has one idea, one diagram, and the real request code. You see the provider's raw `usage` fields, unmodified.
 
-Every lesson runs in two modes:
+Lessons 1 to 3 run in two modes (lesson 4 is arithmetic only and needs no key):
 
 - **Replay** (default): shows real responses recorded from the providers. Needs no key and costs nothing.
 - **Live**: sends two small requests with your own key and shows what comes back.
@@ -41,8 +41,14 @@ The model defaults to the one the recordings were captured with. Override it wit
 | 2 | `02_openai_what_breaks_a_hit.py` | The same three changes where caching is automatic. |
 | 3 | `03_anthropic_growing_conversation.py` | A chat that grows each turn: each call reads the past and writes only the new part. |
 | 3 | `03_openai_growing_conversation.py` | The same conversation with automatic caching and `cached_tokens` in steps. |
+| 4 | `04_anthropic_break_even.py` | When caching pays and when it costs more: real calls costed, break-even reuses, seven usage patterns, 5-minute vs 1-hour cache. |
+| 4 | `04_openai_break_even.py` | The same experiments with OpenAI's prices. Paste your own usage JSON to cost it. |
 
-More lessons are planned: rewriting history, and a break-even lesson on when caching saves money and when it costs more.
+Planned next: rewriting history (what happens when you edit or trim an old conversation).
+
+## Prices
+
+Lesson 4 uses a dated price snapshot in `lessons/economics.py` (checked 2026-10-19, with source links). It warns when the prices are over 60 days old. Prices and cache rules change often, so recheck them before trusting a dollar figure. The tests check that the calculator reproduces the cost estimates stored with the real captures.
 
 ## How to read a result
 

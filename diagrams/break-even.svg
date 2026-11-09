@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="960" height="448" viewBox="0 0 960 448" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="break-even-title break-even-desc">
+        <title id="break-even-title">Break-even reuses for a stable prefix</title>
+        <desc id="break-even-desc">Cumulative relative cost of the stable prefix with and without caching as reuses grow; the cached line starts higher at the write multiplier but flattens to the read multiplier and crosses the uncached line at the break-even reuse count.</desc>
+        <rect width="100%" height="100%" fill="#f5f5f5"/>
+
+        <!-- Gridlines: y = 360 - 50k (units of 2) -->
+        <line x1="100" y1="310" x2="900" y2="310" stroke="rgba(45,49,66,0.12)" stroke-width="1"/>
+        <line x1="100" y1="260" x2="900" y2="260" stroke="rgba(45,49,66,0.12)" stroke-width="1"/>
+        <line x1="100" y1="210" x2="900" y2="210" stroke="rgba(45,49,66,0.12)" stroke-width="1"/>
+        <line x1="100" y1="160" x2="900" y2="160" stroke="rgba(45,49,66,0.12)" stroke-width="1"/>
+        <line x1="100" y1="110" x2="900" y2="110" stroke="rgba(45,49,66,0.12)" stroke-width="1"/>
+        <line x1="100" y1="60"  x2="900" y2="60"  stroke="rgba(45,49,66,0.12)" stroke-width="1"/>
+
+        <!-- Axes -->
+        <line x1="100" y1="360" x2="900" y2="360" stroke="#bfc0c0" stroke-width="1"/>
+        <line x1="100" y1="60" x2="100" y2="360" stroke="#bfc0c0" stroke-width="1"/>
+
+        <!-- Y labels: 25px per unit -->
+        <text x="88" y="363" text-anchor="end" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">0</text>
+        <text x="88" y="313" text-anchor="end" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">2</text>
+        <text x="88" y="263" text-anchor="end" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">4</text>
+        <text x="88" y="213" text-anchor="end" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">6</text>
+        <text x="88" y="163" text-anchor="end" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">8</text>
+        <text x="88" y="113" text-anchor="end" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">10</text>
+        <text x="88" y="63" text-anchor="end" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">12</text>
+        <text transform="rotate(-90 32 210)" x="32" y="210" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8" letter-spacing="0.14em">RELATIVE COST &#183; UNITS OF 1&#215; INPUT</text>
+
+        <!-- X labels: n=0..10 at 80px steps -->
+        <text x="100" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">0</text>
+        <text x="180" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">1</text>
+        <text x="260" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">2</text>
+        <text x="340" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">3</text>
+        <text x="420" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">4</text>
+        <text x="500" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">5</text>
+        <text x="580" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">6</text>
+        <text x="660" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">7</text>
+        <text x="740" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">8</text>
+        <text x="820" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">9</text>
+        <text x="900" y="380" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">10</text>
+        <text x="500" y="396" text-anchor="middle" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8" letter-spacing="0.14em">STABLE-PREFIX REUSES AFTER THE WRITE &#183; n</text>
+
+        <!-- Break-even marker at n*=1 (cached(1)=1.35 vs uncached(1)=2) -->
+        <line x1="180" y1="60" x2="180" y2="360" stroke="#bf4520" stroke-width="1" stroke-dasharray="4,3"/>
+        <rect x="140" y="204" width="80" height="16" rx="2" fill="#f5f5f5"/>
+        <text x="180" y="216" text-anchor="middle" fill="#bf4520" font-family="Geist Mono, ui-monospace, monospace" font-size="8" letter-spacing="0.06em">n* = 1</text>
+
+        <!-- Uncached series: y = 360 - 25(1+n), ink @ 0.62 -->
+        <polyline points="100,335 180,310 260,285 340,260 420,235 500,210 580,185 660,160 740,135 820,110 900,85" fill="none" stroke="rgba(45,49,66,0.62)" stroke-width="1.2" stroke-linejoin="round"/>
+
+        <!-- Cached focal series: y = 360 - 25(1.25 + 0.1n) -->
+        <polyline points="100,328.75 180,320.75 260,313.5 340,306.5 420,299.5 500,292.5 580,285.5 660,278.5 740,271.5 820,264.5 900,257.5" fill="none" stroke="#bf4520" stroke-width="1.8" stroke-linejoin="round"/>
+        <circle cx="100" cy="328.75" r="4" fill="#bf4520"/>
+        <circle cx="180" cy="320.75" r="4" fill="#bf4520"/>
+        <circle cx="260" cy="313.5" r="4" fill="#bf4520"/>
+        <circle cx="340" cy="306.5" r="4" fill="#bf4520"/>
+        <circle cx="420" cy="299.5" r="4" fill="#bf4520"/>
+        <circle cx="500" cy="292.5" r="4" fill="#bf4520"/>
+        <circle cx="580" cy="285.5" r="4" fill="#bf4520"/>
+        <circle cx="660" cy="278.5" r="4" fill="#bf4520"/>
+        <circle cx="740" cy="271.5" r="4" fill="#bf4520"/>
+        <circle cx="820" cy="264.5" r="4" fill="#bf4520"/>
+        <circle cx="900" cy="257.5" r="4" fill="#bf4520"/>
+
+        <!-- Legend strip -->
+        <line x1="100" y1="412" x2="900" y2="412" stroke="rgba(45,49,66,0.12)" stroke-width="1"/>
+        <text x="100" y="426" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="7" font-weight="500" letter-spacing="0.18em">LEGEND</text>
+        <line x1="168" y1="428" x2="192" y2="428" stroke="#bf4520" stroke-width="1.8"/>
+        <circle cx="180" cy="428" r="4" fill="#bf4520"/>
+        <text x="200" y="431" fill="#2d3142" font-family="Geist, system-ui, sans-serif" font-size="10">w + n&#183;r (cached, w=1.25 r=0.10)</text>
+        <line x1="420" y1="428" x2="444" y2="428" stroke="rgba(45,49,66,0.62)" stroke-width="1.2"/>
+        <text x="452" y="431" fill="#2d3142" font-family="Geist, system-ui, sans-serif" font-size="10">1 + n (uncached)</text>
+        <text x="900" y="431" text-anchor="end" fill="#5a6580" font-family="Geist Mono, ui-monospace, monospace" font-size="8">suffix and output costs excluded</text>
+      </svg>
