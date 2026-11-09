@@ -7,6 +7,22 @@ Lessons 1 to 3 and 5 run in two modes (lesson 4 is arithmetic only and needs no 
 - **Replay** (default): shows real responses recorded from the providers. Needs no key and costs nothing.
 - **Live**: sends two small requests with your own key and shows what comes back.
 
+## Try it in your browser
+
+These open each lesson on [molab](https://molab.marimo.io) running in WebAssembly. Nothing to install.
+
+| # | Lesson | Anthropic | OpenAI |
+|---|--------|-----------|--------|
+| 1 | Same prefix twice | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/01_anthropic_cache_hit.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/01_openai_cache_hit.py/wasm) |
+| 2 | What breaks a hit | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/02_anthropic_what_breaks_a_hit.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/02_openai_what_breaks_a_hit.py/wasm) |
+| 3 | A growing conversation | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/03_anthropic_growing_conversation.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/03_openai_growing_conversation.py/wasm) |
+| 4 | When caching pays and bites | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/04_anthropic_break_even.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/04_openai_break_even.py/wasm) |
+| 5 | Rewriting history | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/05_anthropic_rewriting_history.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/05_openai_rewriting_history.py/wasm) |
+
+In the browser a lesson runs in **replay** mode with the recorded provider responses. Live mode needs an API key in an environment variable or `.env`, which a browser page does not have, so the run button stays disabled there. To run live, use the local setup below.
+
+Opened and checked on molab so far: lesson 1 (Anthropic) and lesson 4 (Anthropic). The other lessons use the same helper modules and recordings but have not been opened there yet. molab is a third-party service and may change how it handles these links.
+
 ## Run it locally
 
 You need [uv](https://docs.astral.sh/uv/).
