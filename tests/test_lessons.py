@@ -28,7 +28,8 @@ def test_lesson_runs_in_replay(lesson, tmp_path):
 @pytest.mark.parametrize("path", sorted((ROOT / "recordings").glob("*.json")), ids=lambda p: p.name)
 def test_recordings_are_trimmed_and_clean(path):
     data = json.loads(path.read_text())
-    assert {"provider", "model", "sdk_version", "captured_at", "provider_usage"} <= data.keys()
+    assert {"provider", "model", "sdk_version", "captured_at"} <= data.keys()
+    assert "provider_usage" in data or all("provider_usage" in t for t in data["turns"])
     text = path.read_text().lower()
     assert "api_key" not in text and "bearer" not in text and "sk-" not in text
-    assert path.stat().st_size < 4000
+    assert path.stat().st_size < (9000 if "turns" in data else 4000)

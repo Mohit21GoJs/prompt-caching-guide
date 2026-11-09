@@ -39,8 +39,10 @@ The model defaults to the one the recordings were captured with. Override it wit
 | 1 | `01_openai_cache_hit.py` | Caching is automatic. Call 2 reports `cached_tokens`. |
 | 2 | `02_anthropic_what_breaks_a_hit.py` | Change the question, one byte of the handbook, or the tool order. Which keeps the hit? |
 | 2 | `02_openai_what_breaks_a_hit.py` | The same three changes where caching is automatic. |
+| 3 | `03_anthropic_growing_conversation.py` | A chat that grows each turn: each call reads the past and writes only the new part. |
+| 3 | `03_openai_growing_conversation.py` | The same conversation with automatic caching and `cached_tokens` in steps. |
 
-More lessons are planned: multi-turn, rewriting history, and a break-even lesson on when caching saves money and when it costs more.
+More lessons are planned: rewriting history, and a break-even lesson on when caching saves money and when it costs more.
 
 ## How to read a result
 
