@@ -9,17 +9,21 @@ Lessons 1 to 3 and 5 run in two modes (lesson 4 is arithmetic only and needs no 
 
 ## Try it in your browser
 
-These open each lesson on [molab](https://molab.marimo.io) running in WebAssembly. Nothing to install.
+These open each lesson on [molab](https://molab.marimo.io) running in WebAssembly. Nothing to install. The table below follows `main`, so it always shows the latest lessons.
 
+<!-- molab-links:start -->
 | # | Lesson | Anthropic | OpenAI |
 |---|--------|-----------|--------|
-| 1 | Same prefix twice | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/01_anthropic_cache_hit.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/01_openai_cache_hit.py/wasm) |
-| 2 | What breaks a hit | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/02_anthropic_what_breaks_a_hit.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/02_openai_what_breaks_a_hit.py/wasm) |
-| 3 | A growing conversation | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/03_anthropic_growing_conversation.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/03_openai_growing_conversation.py/wasm) |
-| 4 | When caching pays and bites | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/04_anthropic_break_even.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/04_openai_break_even.py/wasm) |
-| 5 | Rewriting history | [Anthropic](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/05_anthropic_rewriting_history.py/wasm) | [OpenAI](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/05_openai_rewriting_history.py/wasm) |
+| 1 | Cache hit | [![Open Anthropic lesson 01 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/01_anthropic_cache_hit.py/wasm) | [![Open OpenAI lesson 01 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/01_openai_cache_hit.py/wasm) |
+| 2 | What breaks a hit | [![Open Anthropic lesson 02 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/02_anthropic_what_breaks_a_hit.py/wasm) | [![Open OpenAI lesson 02 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/02_openai_what_breaks_a_hit.py/wasm) |
+| 3 | Growing conversation | [![Open Anthropic lesson 03 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/03_anthropic_growing_conversation.py/wasm) | [![Open OpenAI lesson 03 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/03_openai_growing_conversation.py/wasm) |
+| 4 | Break even | [![Open Anthropic lesson 04 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/04_anthropic_break_even.py/wasm) | [![Open OpenAI lesson 04 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/04_openai_break_even.py/wasm) |
+| 5 | Rewriting history | [![Open Anthropic lesson 05 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/05_anthropic_rewriting_history.py/wasm) | [![Open OpenAI lesson 05 in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/Mohit21GoJs/prompt-caching-guide/blob/main/lessons/05_openai_rewriting_history.py/wasm) |
+<!-- molab-links:end -->
 
 In the browser a lesson runs in **replay** mode with the recorded provider responses. Live mode needs an API key in an environment variable or `.env`, which a browser page does not have, so the run button stays disabled there. To run live, use the local setup below.
+
+Every [release](../../releases) lists the same links pinned to that release's commit, so they never change. The table is generated from the files in `lessons/` by `tools/molab_links.py`, and a test fails if it drifts. Do not edit it by hand: run `uv run python tools/molab_links.py --write README.md`.
 
 Opened and checked on molab so far: lesson 1 (Anthropic) and lesson 4 (Anthropic). The other lessons use the same helper modules and recordings but have not been opened there yet. molab is a third-party service and may change how it handles these links.
 
