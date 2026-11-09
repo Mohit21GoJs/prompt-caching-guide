@@ -16,19 +16,17 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        # Lesson 5 (Anthropic): rewriting history
+    mo.md("""
+    # Lesson 5 (Anthropic): rewriting history
 
-        Lesson 3 appended to a conversation, which is the cheap case. Real apps also **change** old
-        messages: they fix a typo, drop the oldest turns to stay inside a context window, or swap old
-        turns for a summary.
+    Lesson 3 appended to a conversation, which is the cheap case. Real apps also **change** old
+    messages: they fix a typo, drop the oldest turns to stay inside a context window, or swap old
+    turns for a summary.
 
-        Each of those changes text near the start of the conversation. A cache hit needs an exact match
-        from the start (lesson 2), so everything after the first changed message is processed and
-        written again, at the write price.
-        """
-    )
+    Each of those changes text near the start of the conversation. A cache hit needs an exact match
+    from the start (lesson 2), so everything after the first changed message is processed and
+    written again, at the write price.
+    """)
     return
 
 
@@ -194,25 +192,23 @@ def _(PROVIDER, economics, guide, mo, result):
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        ## What to take away
+    mo.md("""
+    ## What to take away
 
-        - **A rewrite throws away the cache from the first changed message onward.** The earlier the change,
-          the more you lose. Editing the oldest message loses nearly everything after the handbook.
-        - **Mark the long fixed part separately.** The live request above puts a second `cache_control` on the
-          handbook, so it keeps its own cache entry and survives a rewrite of the conversation. Without that mark,
-          whether the handbook survives depends on which earlier entries exist. The recording above was captured
-          with an earlier cache entry in place, so it shows the handbook surviving.
-        - **Dropping the oldest turn every call is a rewrite every call.** A sliding window moves the start of the
-          conversation each time, so it never reads the conversation part. Dropping a big chunk now and then, then
-          appending for a while, rewrites far less often. This follows from the matching rule. This lesson does not measure it.
-        - **A summary is a rewrite once**, then appending works again. It pays if the summary replaces enough tokens
-          and you keep appending afterwards.
+    - **A rewrite throws away the cache from the first changed message onward.** The earlier the change,
+      the more you lose. Editing the oldest message loses nearly everything after the handbook.
+    - **Mark the long fixed part separately.** The live request above puts a second `cache_control` on the
+      handbook, so it keeps its own cache entry and survives a rewrite of the conversation. Without that mark,
+      whether the handbook survives depends on which earlier entries exist. The recording above was captured
+      with an earlier cache entry in place, so it shows the handbook surviving.
+    - **Dropping the oldest turn every call is a rewrite every call.** A sliding window moves the start of the
+      conversation each time, so it never reads the conversation part. Dropping a big chunk now and then, then
+      appending for a while, rewrites far less often. This follows from the matching rule. This lesson does not measure it.
+    - **A summary is a rewrite once**, then appending works again. It pays if the summary replaces enough tokens
+      and you keep appending afterwards.
 
-        Next: `05_openai_rewriting_history.py` runs the same rewrites where caching is automatic.
-        """
-    )
+    Next: `05_openai_rewriting_history.py` runs the same rewrites where caching is automatic.
+    """)
     return
 
 

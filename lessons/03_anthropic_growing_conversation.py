@@ -14,21 +14,19 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        # Lesson 3 (Anthropic): a conversation that keeps growing
+    mo.md("""
+    # Lesson 3 (Anthropic): a conversation that keeps growing
 
-        In a chat or an agent loop, every call resends the whole conversation plus one new
-        message. That is the best case for caching: each call can **read** everything from the
-        previous call and only **write** the new part.
+    In a chat or an agent loop, every call resends the whole conversation plus one new
+    message. That is the best case for caching: each call can **read** everything from the
+    previous call and only **write** the new part.
 
-        With one top-level `cache_control` field, Anthropic moves the cache mark to the end of
-        the request on every call. You do not manage breakpoints yourself.
+    With one top-level `cache_control` field, Anthropic moves the cache mark to the end of
+    the request on every call. You do not manage breakpoints yourself.
 
-        The recording starts with the handbook already cached, so its turn 1 reads it. A live run
-        starts cold, so your turn 1 writes the whole prefix and the rest follow the same pattern.
-        """
-    )
+    The recording starts with the handbook already cached, so its turn 1 reads it. A live run
+    starts cold, so your turn 1 writes the whole prefix and the rest follow the same pattern.
+    """)
     return
 
 
@@ -51,22 +49,21 @@ def _(guide, mo):
 
 @app.cell
 def _(mo):
-    mo.md("## The request")
+    mo.md("""
+    ## The request
+    """)
     return
 
 
-@app.cell
-def _():
-    def build_request(model: str, prefix: str, messages: list) -> dict:
-        return {
-            "model": model,
-            "max_tokens": 64,
-            "cache_control": {"type": "ephemeral"},  # <- the only caching line: mark moves to the end each call
-            "system": prefix,
-            "messages": messages,  # grows by two items per turn
-        }
-
-    return (build_request,)
+@app.function
+def build_request(model: str, prefix: str, messages: list) -> dict:
+    return {
+        "model": model,
+        "max_tokens": 64,
+        "cache_control": {"type": "ephemeral"},  # <- the only caching line: mark moves to the end each call
+        "system": prefix,
+        "messages": messages,  # grows by two items per turn
+    }
 
 
 @app.cell
@@ -80,7 +77,7 @@ def _(guide, mo, mode, turns):
 
 
 @app.cell
-def _(build_request, guide, mo, mode, run, turns):
+def _(guide, mo, mode, run, turns):
     usages = []
     badge = ""
     _note = ""
@@ -147,19 +144,17 @@ def _(guide, mo, usages):
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        ## What to take away
+    mo.md("""
+    ## What to take away
 
-        - Cost per turn is roughly **new tokens at the write price + everything before at the read price**,
-          not the whole conversation at the full price.
-        - The pattern only holds while you **append**. If you edit, trim or summarize earlier messages,
-          everything after the edit becomes a write again. Lesson 2 showed why.
-        - Each hit refreshes the five-minute lifetime, so a steady conversation keeps its cache alive.
+    - Cost per turn is roughly **new tokens at the write price + everything before at the read price**,
+      not the whole conversation at the full price.
+    - The pattern only holds while you **append**. If you edit, trim or summarize earlier messages,
+      everything after the edit becomes a write again. Lesson 2 showed why.
+    - Each hit refreshes the five-minute lifetime, so a steady conversation keeps its cache alive.
 
-        Next: `03_openai_growing_conversation.py` shows the same conversation where caching is automatic.
-        """
-    )
+    Next: `03_openai_growing_conversation.py` shows the same conversation where caching is automatic.
+    """)
     return
 
 

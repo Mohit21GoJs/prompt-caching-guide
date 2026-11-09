@@ -14,22 +14,20 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        # Lesson 3 (OpenAI): a conversation that keeps growing
+    mo.md("""
+    # Lesson 3 (OpenAI): a conversation that keeps growing
 
-        In a chat or an agent loop, every call resends the whole conversation plus one new
-        message. That is the best case for caching: each call can **read** everything from the
-        previous call and only **write** the new part.
+    In a chat or an agent loop, every call resends the whole conversation plus one new
+    message. That is the best case for caching: each call can **read** everything from the
+    previous call and only **write** the new part.
 
-        OpenAI caches automatically, so there is nothing to mark. Keep the conversation in order,
-        append new items at the end, and send the same `prompt_cache_key` each time.
+    OpenAI caches automatically, so there is nothing to mark. Keep the conversation in order,
+    append new items at the end, and send the same `prompt_cache_key` each time.
 
-        The recording starts with the handbook already cached, so its turn 1 reads it. A live run
-        starts cold, so your turn 1 reads little and the following turns read more. OpenAI reports
-        hits in chunks, so the read grows in steps, not by exact token counts.
-        """
-    )
+    The recording starts with the handbook already cached, so its turn 1 reads it. A live run
+    starts cold, so your turn 1 reads little and the following turns read more. OpenAI reports
+    hits in chunks, so the read grows in steps, not by exact token counts.
+    """)
     return
 
 
@@ -52,21 +50,20 @@ def _(guide, mo):
 
 @app.cell
 def _(mo):
-    mo.md("## The request")
+    mo.md("""
+    ## The request
+    """)
     return
 
 
-@app.cell
-def _():
-    def build_request(model: str, prefix: str, items: list, cache_key: str) -> dict:
-        return {
-            "model": model,
-            "max_output_tokens": 64,
-            "prompt_cache_key": cache_key,  # <- the only caching hint, same on every turn
-            "input": [{"role": "developer", "content": prefix}, *items],  # grows by two items per turn
-        }
-
-    return (build_request,)
+@app.function
+def build_request(model: str, prefix: str, items: list, cache_key: str) -> dict:
+    return {
+        "model": model,
+        "max_output_tokens": 64,
+        "prompt_cache_key": cache_key,  # <- the only caching hint, same on every turn
+        "input": [{"role": "developer", "content": prefix}, *items],  # grows by two items per turn
+    }
 
 
 @app.cell
@@ -80,7 +77,7 @@ def _(guide, mo, mode, turns):
 
 
 @app.cell
-def _(build_request, guide, mo, mode, run, turns):
+def _(guide, mo, mode, run, turns):
     usages = []
     badge = ""
     _note = ""
@@ -147,18 +144,16 @@ def _(guide, mo, usages):
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        ## What to take away
+    mo.md("""
+    ## What to take away
 
-        - Each call is billed as **uncached input at full price + cached input at the discount**. The
-          cached share is what you see in the bar, and it stays high as long as you only append.
-        - The pattern breaks if you edit, trim or reorder earlier items. Lesson 2 showed why.
-        - Caches expire after a period of inactivity, so a long pause between turns resets the pattern.
+    - Each call is billed as **uncached input at full price + cached input at the discount**. The
+      cached share is what you see in the bar, and it stays high as long as you only append.
+    - The pattern breaks if you edit, trim or reorder earlier items. Lesson 2 showed why.
+    - Caches expire after a period of inactivity, so a long pause between turns resets the pattern.
 
-        Compare with `03_anthropic_growing_conversation.py`, where one field moves the mark.
-        """
-    )
+    Compare with `03_anthropic_growing_conversation.py`, where one field moves the mark.
+    """)
     return
 
 

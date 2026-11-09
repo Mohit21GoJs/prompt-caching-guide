@@ -201,23 +201,21 @@ def _(PROVIDER, economics, mo, prefix_tokens):
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        ## When to use it, and when to skip it
+    mo.md("""
+    ## When to use it, and when to skip it
 
-        **Use it** when the same long prefix is sent again within the lifetime: chat and agent loops,
-        a shared system prompt under steady traffic, repeated questions over one big document.
+    **Use it** when the same long prefix is sent again within the lifetime: chat and agent loops,
+    a shared system prompt under steady traffic, repeated questions over one big document.
 
-        **It bites** when the prefix is used once or rarely, when the gap between calls is longer than the
-        lifetime (you pay a write every time), when the prefix changes every call (a timestamp or ID near
-        the start, lesson 2), and, on models that charge for writes, when the cache is written and never read.
+    **It bites** when the prefix is used once or rarely, when the gap between calls is longer than the
+    lifetime (you pay a write every time), when the prefix changes every call (a timestamp or ID near
+    the start, lesson 2), and, on models that charge for writes, when the cache is written and never read.
 
-        **Check before you ship:** log the usage fields for real traffic. If `cached_tokens` is mostly
-        zero while `cache_write_tokens` keeps appearing, you are paying the premium for nothing.
+    **Check before you ship:** log the usage fields for real traffic. If `cached_tokens` is mostly
+    zero while `cache_write_tokens` keeps appearing, you are paying the premium for nothing.
 
-        Compare with `04_anthropic_break_even.py`, which also offers a one-hour cache at a higher write price.
-        """
-    )
+    Compare with `04_anthropic_break_even.py`, which also offers a one-hour cache at a higher write price.
+    """)
     return
 
 

@@ -14,18 +14,16 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        # Lesson 2 (OpenAI): what breaks a cache hit
+    mo.md("""
+    # Lesson 2 (OpenAI): what breaks a cache hit
 
-        A hit needs the **start** of the request to match an earlier request exactly. OpenAI
-        caches automatically, in order: tools, then your input items from the first to the last.
-        There is no mark. The hit covers the longest matching start.
+    A hit needs the **start** of the request to match an earlier request exactly. OpenAI
+    caches automatically, in order: tools, then your input items from the first to the last.
+    There is no mark. The hit covers the longest matching start.
 
-        So a change near the end keeps most of the hit. A change near the start breaks nearly all
-        of it. Pick a change, then compare.
-        """
-    )
+    So a change near the end keeps most of the hit. A change near the start breaks nearly all
+    of it. Pick a change, then compare.
+    """)
     return
 
 
@@ -52,7 +50,9 @@ def _(guide, mo):
 
 @app.cell
 def _(mo):
-    mo.md("## The request, and the three changes")
+    mo.md("""
+    ## The request, and the three changes
+    """)
     return
 
 
@@ -191,18 +191,16 @@ def _(guide, mo):
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        ## The rule to take away
+    mo.md("""
+    ## The rule to take away
 
-        Put what stays the same first and what changes last. Anything that changes near the start,
-        including tool definitions and a timestamp or ID in the system text, throws away the hit.
-        Unlike Anthropic, a miss here costs no extra write fee on older models, but you lose the
-        discount on every token after the change. Newer models can also report `cache_write_tokens`.
+    Put what stays the same first and what changes last. Anything that changes near the start,
+    including tool definitions and a timestamp or ID in the system text, throws away the hit.
+    Unlike Anthropic, a miss here costs no extra write fee on older models, but you lose the
+    discount on every token after the change. Newer models can also report `cache_write_tokens`.
 
-        Compare with `02_anthropic_what_breaks_a_hit.py`, where the mark is explicit.
-        """
-    )
+    Compare with `02_anthropic_what_breaks_a_hit.py`, where the mark is explicit.
+    """)
     return
 
 
